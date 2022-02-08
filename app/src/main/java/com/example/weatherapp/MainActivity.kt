@@ -1,17 +1,25 @@
 package com.example.weatherapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
 
-    //lateinit var conditionIcon: ImageView
+
+    private lateinit var button : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //conditionIcon = findViewById(R.id.condition_icon)
+        button = findViewById(R.id.forecast_button)
+
+        button.setOnClickListener{
+            startActivity(Intent(this, ForecastActivity::class.java))
+        }
+
     }
 }

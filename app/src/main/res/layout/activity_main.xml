@@ -8,6 +8,22 @@
     android:background="@color/teal_200"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/forecast_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/forecast_button"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="400dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+
+         />
+
     <TextView
         android:id="@+id/city_name"
         android:layout_width="wrap_content"
