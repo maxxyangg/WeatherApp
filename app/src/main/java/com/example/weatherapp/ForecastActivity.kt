@@ -28,7 +28,7 @@ class ForecastActivity : AppCompatActivity() {
         DayForecast(1644785880, 1643724051, 1643770851, ForcastTemp(35.0f,4f,37.0f), 1023.0f, 92),
         DayForecast(1644872280, 1643724051, 1643770851, ForcastTemp(1.0f,1.0f,24.0f), 1023.0f, 70),
         DayForecast(1644958680, 1643724051, 1643770851, ForcastTemp(24.0f,14.0f,30.0f), 1023.0f, 88),
-        DayForecast(1645045080, 1643724051, 1643770851, ForcastTemp(40.0f,40.0f,40.0f), 1023.0f, 95),
+        DayForecast(1645045080, 1643724051, 1643770851, ForcastTemp(23.0f,4.0f,30.0f), 1023.0f, 40),
 
 
     )
