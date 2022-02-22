@@ -1,46 +1,89 @@
 package com.example.weatherapp
 
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class ForecastActivity : AppCompatActivity() {
 
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
+
+    private lateinit var api: Api
 
 
-    val adapterData = listOf<DayForecast>(
-        DayForecast(1643749080, 1643724051, 1643770851, ForcastTemp(30.0f,5.0f,50.0f), 1023.0f, 100),
-        DayForecast(1643835480, 1643724051, 1643770851, ForcastTemp(45.0f,3.0f,66.0f), 1023.0f, 79),
-        DayForecast(1643921880, 1643724051, 1643770851, ForcastTemp(50.0f,10.0f,60.0f), 1023.0f, 71),
-        DayForecast(1644008280, 1643724051, 1643770851, ForcastTemp(43.0f,6.0f,52.0f), 1023.0f, 61),
-        DayForecast(1644094680, 1643724051, 1643770851, ForcastTemp(25.0f,-1.0f,35.0f), 1023.0f, 38),
-        DayForecast(1644181080, 1643724051, 1643770851, ForcastTemp(31.0f,2.0f,40.0f), 1023.0f, 71),
-        DayForecast(1644267480, 1643724051, 1643770851, ForcastTemp(24.0f,1.0f,34.0f), 1023.0f, 92),
-        DayForecast(1644353880, 1643724051, 1643770851, ForcastTemp(21.0f,1.0f,24.0f), 1023.0f, 72),
-        DayForecast(1644440280, 1643724051, 1643770851, ForcastTemp(45.0f,10.0f,52.0f), 1023.0f, 48),
-        DayForecast(1644526680, 1643724051, 1643770851, ForcastTemp(41.0f,14.0f,52.0f), 1023.0f, 79),
-        DayForecast(1644613080, 1643724051, 1643770851, ForcastTemp(24.0f,1.0f,34.0f), 1023.0f, 66),
-        DayForecast(1644699480, 1643724051, 1643770851, ForcastTemp(25.0f,-1.0f,35.0f), 1023.0f, 31),
-        DayForecast(1644785880, 1643724051, 1643770851, ForcastTemp(35.0f,4f,37.0f), 1023.0f, 92),
-        DayForecast(1644872280, 1643724051, 1643770851, ForcastTemp(1.0f,1.0f,24.0f), 1023.0f, 70),
-        DayForecast(1644958680, 1643724051, 1643770851, ForcastTemp(24.0f,14.0f,30.0f), 1023.0f, 88),
-        DayForecast(1645045080, 1643724051, 1643770851, ForcastTemp(23.0f,4.0f,30.0f), 1023.0f, 40),
 
-
-    )
+    lateinit var adapterData : List<DayForecast>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forecast)
+        println("creating forecast")
 
+        adapterData = mutableListOf()
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = MyAdapter(adapterData)
 
-        recyclerView.addItemDecoration(DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL)) // https://stackoverflow.com/questions/31242812/how-can-a-divider-line-be-added-in-an-android-recyclerview
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                recyclerView.getContext(),
+                DividerItemDecoration.VERTICAL
+            )
+        ) // https://stackoverflow.com/questions/31242812/how-can-a-divider-line-be-added-in-an-android-recyclerview
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://pro.openweathermap.org/data/2.5/forecast/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+
+        api = retrofit.create(Api::class.java)
+
     }
+
+    override fun onResume(){
+        super.onResume()
+        println("grabbing data")
+        val call: Call<Forecast> = api.getForcast("55038")
+        call.enqueue(object : Callback<Forecast>{
+            override fun onResponse(
+                call: Call<Forecast>,
+                response: Response<Forecast>
+            ) {
+                println("successfully got it")
+                val forecastConditions = response.body()
+                forecastConditions?.let {
+                    sendAdapter(it)
+                }
+
+            }
+
+            override fun onFailure(call: Call<Forecast>, t: Throwable) {
+                println("Fail: did not get conditions")
+                println(t.message)
+
+            }
+        })
+    }
+
+    fun sendAdapter(conditions: Forecast){
+        adapterData = conditions.list as MutableList<DayForecast>
+        recyclerView.adapter = MyAdapter(adapterData)
+    }
+
+
 }

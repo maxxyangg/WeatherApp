@@ -17,6 +17,7 @@
         android:layout_height="match_parent"
         android:padding="1dp"
         android:gravity="start|center_vertical"
+
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@id/forecast_icon"
@@ -29,7 +30,6 @@
         android:layout_width="50dp"
         android:src="@drawable/sun"
         app:layout_constraintStart_toStartOf="parent"
-
         tools:ignore="MissingConstraints" />
 
     <TextView
