@@ -13,7 +13,7 @@ interface Api {
     ) : Call<CurrentConditions>
 
 
-    @GET("daily")
+    @GET("forecast/daily")
     fun getForcast(
         @Query("zip") zip: String,
         @Query("units") units: String = "imperial",
