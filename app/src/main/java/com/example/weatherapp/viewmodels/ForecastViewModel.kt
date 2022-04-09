@@ -1,14 +1,12 @@
-package com.example.weatherapp
+package com.example.weatherapp.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.RecyclerView
+import com.example.weatherapp.Api
+import com.example.weatherapp.Forecast
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 class ForecastViewModel @Inject constructor(private val service: Api): ViewModel() {
@@ -17,10 +15,10 @@ class ForecastViewModel @Inject constructor(private val service: Api): ViewModel
     val forecastConditions: LiveData<Forecast>
         get() = _forecastConditions
 
-    fun loadData() = runBlocking{
+    fun loadData(zipCode: String) = runBlocking{
 
         launch{
-            _forecastConditions.value = service.getForcast("55038")
+            _forecastConditions.value = service.getForcast(zipCode)
         }
 
     }
