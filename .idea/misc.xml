@@ -6,7 +6,7 @@
         <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/activity_main.xml" value="0.245018115942029" />
         <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/fragment_currentconditions.xml" value="0.11043566362715299" />
         <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/fragment_forecast.xml" value="0.18085106382978725" />
-        <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/fragment_search.xml" value="0.14361702127659576" />
+        <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/fragment_search.xml" value="0.25" />
         <entry key="..\:/AndroidStudio/WeatherApp/app/src/main/res/layout/row_date.xml" value="0.245018115942029" />
       </map>
     </option>

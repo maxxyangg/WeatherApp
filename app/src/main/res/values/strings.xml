@@ -23,4 +23,8 @@
     <string name="ok">Ok</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="getLocationButton">Get Location</string>
+
+    <string name="location_permission_rationale">Location Permission is required to retrieve location</string>
+    <string name="okay">Okay</string>
 </resources>

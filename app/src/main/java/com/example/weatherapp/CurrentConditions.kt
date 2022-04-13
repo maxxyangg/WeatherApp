@@ -9,5 +9,6 @@ data class CurrentConditions(
     val weather:  List<WeatherCondition>,
     val main: @RawValue CurrentTemps,
     val name: String,
+    val coord: Coordinates,
 ): Parcelable
 
