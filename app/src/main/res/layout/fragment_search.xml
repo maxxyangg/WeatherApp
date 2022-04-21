@@ -20,9 +20,15 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="@string/searchZip"/>
+        android:text="@string/searchZip" />
+
+    <Button
+        android:id="@+id/locationButton"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="@string/getLocationButton"/>
     
 
 </LinearLayout>

@@ -34,7 +34,7 @@ class CurrentConditionsFragment : Fragment(R.layout.fragment_currentconditions) 
         bindData()
 
         binding.forecastButton.setOnClickListener{
-            val action = CurrentConditionsFragmentDirections.actionCurrentConditionsFragmentToForecastFragment(args.zipCode)
+            val action = CurrentConditionsFragmentDirections.actionCurrentConditionsFragmentToForecastFragment(args.coordinates)
             findNavController().navigate(action)
         }
 

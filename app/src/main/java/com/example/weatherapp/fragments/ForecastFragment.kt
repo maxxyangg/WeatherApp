@@ -43,7 +43,7 @@ class ForecastFragment : Fragment(R.layout.fragment_forecast) {
             )
         ) // https://stackoverflow.com/questions/31242812/how-can-a-divider-line-be-added-in-an-android-recyclerview
 
-        viewModel.loadData(args.zipCode)
+        viewModel.loadData(args.coordinates.latitude, args.coordinates.longitude)
         viewModel.forecastConditions.observe(viewLifecycleOwner){
                 forecast -> binding.recyclerView.adapter = MyAdapter(forecast.list)
         }
