@@ -20,15 +20,22 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
         android:text="@string/searchZip" />
 
     <Button
         android:id="@+id/locationButton"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
         android:text="@string/getLocationButton"/>
+
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:text="@string/notificationsOnText"/>
+
     
 
 </LinearLayout>
