@@ -1,20 +1,19 @@
 package com.example.weatherapp.viewmodels
 
-import android.util.Log
-import androidx.core.app.ActivityCompat
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.Api
-import com.example.weatherapp.Coordinates
 import com.example.weatherapp.CurrentConditions
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.util.jar.Manifest
 import javax.inject.Inject
-import kotlin.random.Random
+
 
 class SearchViewModel @Inject constructor(private val service: Api) : ViewModel() {
+
+
 
     private var zipCode: String? = null
     private var lat: Double? = null
@@ -67,9 +66,6 @@ class SearchViewModel @Inject constructor(private val service: Api) : ViewModel(
             } }
         }
     }
-
-
-
 
 
 

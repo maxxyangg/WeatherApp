@@ -26,5 +26,14 @@
     <string name="getLocationButton">Get Location</string>
 
     <string name="location_permission_rationale">Location Permission is required to retrieve location</string>
+    <string name="foreground_permission_rationale">foreground permission is required to start notifications</string>
+
     <string name="okay">Okay</string>
+    <string name="notificationsOnText">Turn On Notifications</string>
+    <string name="notificationsOffText">Turn Off Notifications</string>
+
+
+    <string name="channel_name">Notification Title</string>
+    <string name="channel_description">description text for channel</string>
+    <string name="notification_title">"Weather App "</string>
 </resources>
